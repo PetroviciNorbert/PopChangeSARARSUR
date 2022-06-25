@@ -10,7 +10,7 @@ library(walrus) #for robust errors
 
 #Set session preferences-------------------------------------------------------------------------
 # Working directory
-setwd("C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/02. Model")
+setwd("C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/09. GitHub/PopChangeSARARSUR")
 
 #Sets the number of digits to 3, and scientific notation to 7
 options(digits=3, scipen=3)
@@ -20,7 +20,7 @@ set_summ_defaults (digits = 3, robust=TRUE, vifs=TRUE)
 
 
 #Import data-------------------------------------------------------------------------
-modelanova <- read.csv("C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/02. Model/model anova.csv")
+modelanova <- read.csv("C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/09. GitHub/PopChangeSARARSUR/model anova.csv")
 summary (modelanova)
 names(modelanova)
 
@@ -244,14 +244,14 @@ compare_performance(m4a, m7, m8, ms7, ms8, rank = TRUE)
 m7.pred <- data.frame (modelanova$SIRUTA, m7$fitted.values)
 colnames(m7.pred)[1] <- "SIRUTA" #first column renamed to SIRUTA
 colnames(m7.pred)[2] <- "Yhat.M7" #first column renamed to SIRUTA
-write.csv (m7.pred, file="C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/02. Model/m7.yhat.csv")
+write.csv (m7.pred, file="C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/09. GitHub/PopChangeSARARSUR/m7.yhat.csv")
 
 
 #Model 7 SUR-SARAR
 ms7.pred <- data.frame (spat.anova$SIRUTA, ms7$fitted.values)
 colnames(ms7.pred)[1] <- "SIRUTA" #first column renamed to SIRUTA
 colnames(ms7.pred)[2] <- "Yhat.MS7" #first column renamed to SIRUTA
-write.csv (ms7.pred, file="C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/02. Model/ms7.yhat.csv")
+write.csv (C:/Users/Norbert/OneDrive/A02. Florin - Specializare sectoriala/09. GitHub/PopChangeSARARSUR/ms7.yhat.csv")
 
 
 
@@ -266,7 +266,6 @@ m8T <- TukeyHSD(m8aov, 'Region', conf.level=0.95)
 m8T <- TukeyHSD(m8aov, 'LocalityType', conf.level=0.95)
 m8T <- TukeyHSD(m8aov, 'CoreEconomy', conf.level=0.95)
 m8T <- TukeyHSD(m8aov, 'Cluster:LocalityType', conf.level=0.95)
-
 print(m8T)
 
 
